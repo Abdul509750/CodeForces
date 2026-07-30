@@ -1,5 +1,7 @@
 
 // efficient solution
+//prev sol t.c = O(n)^2
+// this one is O(n)
 #include<iostream>
 #include<vector>
 using namespace std;
@@ -21,10 +23,22 @@ int main(){
         cin>>ai;
         input.push_back(ai);
     }
+    int min = input[0];
+    int sum = 0;
+
     for(int i = 0; i < input.size(); i++){
         // by keeping the track of the minimum
+        if(input[i] > min){
+            input[i] = min;  
+        }else{
+            min = input[i];
+        }
+        sum+=min;
+        
     }
+    cout<<sum<<endl;
    }
+
 
 
     return 0;
