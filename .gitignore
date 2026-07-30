@@ -1,0 +1,5 @@
+# any json file defining the c++ setup
+*.json
+
+#any executables
+*.exe
