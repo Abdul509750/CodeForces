@@ -1,27 +1,34 @@
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
+#include<cmath>
 using namespace std;
 
-const int INF = 1e9;
+const long long INF = 1e9;
 
-vector<int> value(100001, -1);
+vector<long long> value(32, -1);
 
-int coins[] = {1,3,6,10,15};
+int coins[] = {1, 3, 6, 10, 15};
 
-int solve(int x){
+long long solve(int x) {
 
-    if(x < 0)
+    if (x < 0)
         return INF;
 
-    if(x == 0)
+    if (x == 0)
         return 0;
 
-    if(value[x] != -1)
+    // Already calculated?
+    if (x <= 31 && value[x] != -1)
         return value[x];
 
-    int best = INF;
+    if (x > 31) {
+    int ans = (x - 31 + 14) / 15;
+    return solve(x - ans * 15) + ans;
+}
 
-    for(int c : coins){
+    long long best = INF;
+
+    for (auto c : coins) {
         best = min(best, solve(x - c) + 1);
     }
 
@@ -30,15 +37,20 @@ int solve(int x){
     return best;
 }
 
-int main(){
+int main() {
 
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
+    // Populate DP for 0...31
+    for (int i = 0; i <= 31; i++) {
+        value[i] = solve(i);
+    }
+
     int t;
     cin >> t;
 
-    while(t--){
+    while (t--) {
 
         int number;
         cin >> number;
