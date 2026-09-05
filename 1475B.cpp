@@ -1,35 +1,40 @@
-#include<iostream>
+#include <iostream>
+#include <vector>
 using namespace std;
 
+bool solve(int number, int sum, vector<int>& memo) {
 
-bool solve(int number){
-    //case 1 is that its divisible by 2020
-    // case 2 is that its divisible by 2021
-    // case 3 is that its sum of both 2020 & 2021
-    // case 3a if its even and last digit is greater than 0, then even number of 2021 are used
-    // in this case we will do if remain = number % 2021 && remain % 2020 == 0 then yes
-    // case 3b if its odd then odd number of 2021 is used and yess
-    if(number % 2020 == 0){
+    if (sum == number)
         return true;
-    }else if(number % 2021 == 0){
-        return true;
-    }else{
-        int remain = number % 2021;
-        if(remain % 2020 == 0){
-            return true;
-        }else{
-            return false;
-        }
-    }
+
+    if (sum > number)
+        return false;
+
+    if (memo[sum] != -1)
+        return memo[sum];
+
+    bool right = solve(number, sum + 2020, memo);
+    bool left  = solve(number, sum + 2021, memo);
+
+    return memo[sum] = (right || left);
 }
-int main(){
-    int t = 0;
+
+int main() {
+    int t;
     cin >> t;
-    while(t--){
-        int number = 0;
-        cin>>number;
-        string answer = solve(number)==true?"Yes":"No";
-        cout<<answer<<endl;
+
+    while (t--) {
+
+        int number;
+        cin >> number;
+
+        vector<int> memo(number + 1, -1);
+
+        if (solve(number, 0, memo))
+            cout << "Yes\n";
+        else
+            cout << "No\n";
     }
+
     return 0;
 }
