@@ -1,49 +1,90 @@
+/*
+If Allah’s decree has drawn the line,
+I trust His wisdom and design.
+Through every trial, His mercies shine;
+I walk this path by will divine.
+
+I cannot grasp what lies unseen,
+Nor know what every test may mean.
+But faith keeps heart and spirit clean,
+And Allah knows what might have been.
+
+No worldly race defines my worth,
+For every soul returns from earth.
+Through darkest nights and days of mirth,
+The Qur’an guides me from my birth.
+
+When right and wrong seem hard to see,
+I turn to Allah faithfully.
+In prayer, my restless heart breaks free
+Through zikr comes tranquillity.
+
+The grace I thought I’d never know
+Through Allah’s mercy came to grow.
+With sabr and trust, my heart will show
+That after hardship, ease will flow.
+*/
+
 #include<iostream>
-#include<algorithm>
 #include<vector>
 using namespace std;
+vector<int> findMax(vector<long long> victory, int n) {
+    vector<int> maxies = {-1, -1, -1};
+
+    for (int i = 0; i < n; i++) {
+        if (maxies[0] == -1 || victory[i] > victory[maxies[0]]) {
+            maxies[2] = maxies[1];
+            maxies[1] = maxies[0];
+            maxies[0] = i;
+        }
+        else if (maxies[1] == -1 || victory[i] > victory[maxies[1]]) {
+            maxies[2] = maxies[1];
+            maxies[1] = i;
+        }
+        else if (maxies[2] == -1 || victory[i] > victory[maxies[2]]) {
+            maxies[2] = i;
+        }
+    }
+
+    return maxies;
+}
+
 int main(){
+  
+    
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    int t = 0; 
+    long long t = 0; 
     cin>>t;
     while(t--){
-        int n = 0; 
+
+        long long n = 0; 
         cin>>n;
-        vector<int> a(n);
-        vector<int> b(n);
-        vector<int> c(n);
-        for(int i = 0; i < n; i++)
+        vector<long long> a(n);
+        vector<long long> b(n);
+        vector<long long> c(n);
+        for(long long i = 0; i < n; i++)
            cin>>a[i];
         
-        for(int i = 0; i < n; i++)
+        for(long long i = 0; i < n; i++)
            cin>>b[i];
         
-        for(int i = 0; i < n; i++)
-           cin>>c[i];   
-        int larp1 = *max_element(a.begin() , a.end());
-        int larp2 = *max_element(b.begin() , b.end());
-        int larp3 = *max_element(c.begin() , c.end());
+        for(long long i = 0; i < n; i++)
+           cin>>c[i]; 
 
-        int larpingwinner =larp1 > larp2 ? larp1 > larp3 ? 1 : 3 : larp2 > larp3 ? 2 : 3;
-        int larpersSum = 0;
-        switch(larpingwinner) {
-            case 1:
-                // larp1
-               int stilllarping = larp2>larp3?'No 2 larp':'yea its';
-               switch(stilllarping){
-                case 'No 2 larp':
-
-                case 'yea its':
-               }
-
-            case 2:
-                // larp2
-                break;
-
-            case 3:
-                // larp3
-                break;
+        long long answer = 0;
+        // find the max three 
+        for(auto& i : findMax(a , n)){
+            for(auto& j : findMax(b , n)){
+                for(auto& k : findMax(c , n)){
+                      if( i != j && j != k && i !=k){
+                        answer = max(answer , a[i] + b[j] + c[k]);
+                      }
+                }
+            }
         }
+        cout<<answer<<endl; // i guess bro
+    
+    }
     return 0;
 } 
