@@ -46,7 +46,7 @@ int main(){
     long long x = 0;
     long long k = 0; // number of pairs
 
-
+    // form total pairs
     while(x + 4 < n){
         previousSums.push_back(input[x] + input[x + 2] - input[x + 4]);
         x++;
