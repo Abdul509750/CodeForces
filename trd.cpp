@@ -75,4 +75,34 @@ IMPORTANT CONCEPTS
 okay so if we havent allocated the n size map still we can do map[n] ? YES
 dp.count(number) ==> in maps it checks if the value is allocated or not
 using sets as an iterator and the major erase and the insert functions of sets
+sort in the descending order of vector sort(v.begin , v.end() , greater<ll>());
+### Set + `lower_bound` Optimization
+
+**Concept:** Maintain a `set` of indices that still need updates. Use `lower_bound` to skip irrelevant indices and process only active indices inside a query range.
+
+```cpp
+auto it = active.lower_bound(l - 1);
+
+while(it != active.end() && *it < r){
+    ll i = *it;
+    input[i] = claculateSum(input[i]);
+
+    if(input[i] < 10)
+        it = active.erase(it); // erase and advance
+    else
+        ++it;
+}
+```
+
+**Explanation:**
+- `lower_bound(l - 1)`: finds the first active index at or after the 0-based left boundary.
+- `*it < r`: ensures the index is inside the 1-based range `[l, r]`.
+- `active.erase(it)`: removes an index that needs no future updates and returns the next iterator.
+- `++it`: advances when the index remains active.
+
+**Use case:** Range queries where some indices become permanently irrelevant, allowing future queries to skip them.
+
+ACCESSING MAP FIRST AND THE SECOND ELEMENT
+auto it = map.begin
+it->first (key) ,  it->second (value);
 */
