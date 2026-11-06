@@ -106,3 +106,14 @@ ACCESSING MAP FIRST AND THE SECOND ELEMENT
 auto it = map.begin
 it->first (key) ,  it->second (value);
 */
+// TAKING THE ARRAY with negative and positive elements sum
+// kadane's algorithm
+// how it works at each point it checks wether to extends the sum or take the sum of the 
+// current element
+// sum = max(input[i] , sum + input[i]);
+// in this way it handles both the negative and the positive element and finds 
+// the max subsequence array sum problem (1899C.cpp) dated (10/27/2026)
+
+// problem 1899B dated -- 11/6/2026
+//23 PREFIX SUM OF ARRAY for(int i = 0; i < n;i ++){pref[i + 1] = pref[i] + input[i]}
+// ACCESSING MIN AND MAX OF AN ARRAY *min_element & *max_element 
