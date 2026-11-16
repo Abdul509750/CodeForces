@@ -116,4 +116,9 @@ it->first (key) ,  it->second (value);
 
 // problem 1899B dated -- 11/6/2026
 //23 PREFIX SUM OF ARRAY for(int i = 0; i < n;i ++){pref[i + 1] = pref[i] + input[i]}
-// ACCESSING MIN AND MAX OF AN ARRAY *min_element & *max_element 
+// ACCESSING MIN AND MAX OF AN ARRAY *min_element & *max_element --> *max_element(input.begin(), input.end())
+// problem 1891 -- 11/8/2026
+// several findings in the time constraint problem today i solved there must be some condition at which we can stop the 
+// condition in the loop like in this problem they said only apply the certain operation when the particualr condition y is met 
+// so there must be a case when this will not happen and u have just to find that particular condition either by sorting 
+// by assuming anything any assumption or by anything u just have to find that
