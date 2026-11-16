@@ -105,6 +105,9 @@ while(it != active.end() && *it < r){
 ACCESSING MAP FIRST AND THE SECOND ELEMENT
 auto it = map.begin
 it->first (key) ,  it->second (value);
+
+
+
 */
 // TAKING THE ARRAY with negative and positive elements sum
 // kadane's algorithm
