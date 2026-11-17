@@ -50,7 +50,7 @@ int main(){
             cin >> num;
         }
 
-        cout << solve(sizes, c, 0, c, n) << '\n';
+        cout << solve(sizes, c, 0, 1e9, n) << '\n';
     }
 
     return 0;

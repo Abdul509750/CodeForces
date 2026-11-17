@@ -125,3 +125,12 @@ it->first (key) ,  it->second (value);
 // condition in the loop like in this problem they said only apply the certain operation when the particualr condition y is met 
 // so there must be a case when this will not happen and u have just to find that particular condition either by sorting 
 // by assuming anything any assumption or by anything u just have to find that
+
+// problem 1850E .... dated 11/16/2026
+// in order to avoid the overflow it is recommended to always use the 
+//    ll mid = start + (end - start) / 2; this mid calculation
+// the other mid calculation gives the overflow in bigger things so devised to use this
+// formulae for calculating the succesive sums in the array sum
+// sn = prevsum + n * newnumber_to_be_added
+// if we wanna add some constant to some specific range of the element then 
+// snew = prevsum + (R-L+1) X NEWNUMBER_TO_BE_ADDED
