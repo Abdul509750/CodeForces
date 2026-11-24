@@ -134,3 +134,24 @@ it->first (key) ,  it->second (value);
 // sn = prevsum + n * newnumber_to_be_added
 // if we wanna add some constant to some specific range of the element then 
 // snew = prevsum + (R-L+1) X NEWNUMBER_TO_BE_ADDED
+// problems from assignment --- dated 11/15/2026
+// in this problem we had some concepts of the simple dijkstras , dijkstra with state expansion
+// kruskal's algo (use of dsu) in kruskal 
+/* DSU
+// vector<ll> parents(n);
+// vector<ll>sizey(n);
+// void initialization(){
+//  for(int i = 0; i < n; i++){
+//         parents[i] = i;
+//  }
+//    
+//}
+     // we need the unite function
+     unite(ll a , ll b){
+        a  = find(a);
+        b = find(b);
+        if(a == b){
+        return;
+        }
+     }
+*/
