@@ -154,4 +154,10 @@ it->first (key) ,  it->second (value);
         return;
         }
      }
+        
+    PROBLEM 1878C--- dated 11/25/2026
+    if we are given the numbers starting from 1 ---> n then we can find the sum of the k elements
+                   ll minimumsum = k * (k + 1) / 2;
+                   ll maximumsum = k * (2 * n - k + 1) / 2; 
+                   one is the minimum sum and the other is the maximum sum
 */
